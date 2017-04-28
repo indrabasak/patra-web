@@ -15,14 +15,15 @@ Patra allows you to visualize [Dropwizard Metrics](http://metrics.dropwizard.io/
 ```
 mvn clean install
 ```
-Once the build completes successfully, you should have the artifact `patra-web-1.0.0.jar` in the `target` folder.
+Once the build completes successfully, you should have `patra-web-1.0.0.jar` in the `target` folder.
 
-The patra version is specified in `pom.xml` where `patra.version` is the git tag on the [patra repo]((https://github.com/indrabasak/patra))
+The patra version is specified in the `pom.xml` where `patra.version` is the git tag on 
+the [patra repo](https://github.com/indrabasak/patra).
 
 # Usage
 Spring Boot picks up the content of a webjars if the jar is detected in the classpath. Please see the 
-[webjar documentation] (http://www.webjars.org/documentation#springmvc) on how to configure a webjar with a Spring 
-application.
+[webjar documentation] (http://www.webjars.org/documentation#springmvc) to find out more on how to configure a webjar 
+with a Spring application.
 
 The content of the `patra-web` webjar can be accessed from the following url: http:<host>:<port>/patra-ui.html
 
