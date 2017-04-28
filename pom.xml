@@ -19,7 +19,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.basaki.metrics</groupId>
+    <groupId>org.basaki.metrics</groupId>
     <artifactId>patra-web</artifactId>
     <version>1.0.0</version>
     <name>patra-web</name>
