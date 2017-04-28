@@ -25,7 +25,10 @@ Spring Boot picks up the content of a webjars if the jar is detected in the clas
 [webjar documentation] (http://www.webjars.org/documentation#springmvc) to find out more on how to configure a webjar 
 with a Spring application.
 
-The content of the `patra-web` webjar can be accessed from the following url: http:<host>:<port>/patra-ui.html
+The content of the `patra-web` webjar can be accessed from the following url: `http://<app host>:<app port>/patra-ui.html`
+
+Please note that url for fetching the metric is `http://<app host>:<app port>/metrics/metrics`. If the metrics url is
+different, change it in the `pom.xml` by modifying the _Renaming the metrics url_ step.
 
 # License
 
