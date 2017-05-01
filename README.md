@@ -22,7 +22,7 @@ the [patra repo](https://github.com/indrabasak/patra).
 
 # Usage
 Spring Boot picks up the content of a webjars if the jar is detected in the classpath. Please see the 
-[webjar documentation] (http://www.webjars.org/documentation#springmvc) to find out more on how to configure a webjar 
+[webjar documentation](http://www.webjars.org/documentation#springmvc) to find out more on how to configure a webjar 
 with a Spring application.
 
 The content of the `patra-web` webjar can be accessed from the following url: `http://<app host>:<app port>/patra-ui.html`
