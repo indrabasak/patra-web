@@ -3,11 +3,11 @@
 
 Patra Web
 ==========================
-* Creates a [Webjar](http://www.webjars.org/) containing the [patra](https://github.com/indrabasak/patra) static content. 
+* Creates a [Webjar](http://www.webjars.org/) containing the static content of [patra](https://indrabasak.github.io/patra/). 
 Webjars is a convention for packaging client-side web libraries as JAR dependencies.
 * The content is served from the the following url: `http://<host>:<port>/patra-ui.html`
 
-Patra allows you to visualize [Dropwizard Metrics](http://metrics.dropwizard.io/) in a user friendly way.
+Patra visualizes [Dropwizard Metrics](http://metrics.dropwizard.io/) in a user friendly way.
 
 # Build
 * Check out the [project](https://github.com/indrabasak/patra-web).
