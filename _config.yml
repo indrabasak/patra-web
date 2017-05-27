@@ -1,1 +1,13 @@
 theme: jekyll-theme-midnight
+
+baseurl: /patra-web
+
+title: Patra Web
+description: A Webjar containing the static content of Patra. Patra visualizes Dropwizard Metrics
+
+author: Indra Basak
+
+#logo: ./src/images/logo-blue_40px.png
+#docs: https://github.com/indrabasak/patra/wiki
+#demo: ./demo/index.html
+blog: https://indrabasak.github.io
