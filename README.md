@@ -1,5 +1,6 @@
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Build Status][travis-badge]][travis-badge-url]
 
+![](./images/logo-paleblue-candara_357px.png)
 
 Patra Web
 ==========================
