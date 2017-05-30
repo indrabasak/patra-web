@@ -19,32 +19,53 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.basaki.metrics</groupId>
+    <groupId>com.github.indrabasak</groupId>
     <artifactId>patra-web</artifactId>
     <version>1.0.0</version>
-    <name>patra-web</name>
 
-    <properties>
-        <patra.version>master</patra.version>
-        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
-        <github.global.server>github</github.global.server>
-        <repository.name>patra-web</repository.name>
-        <repository.owner>indrabasak</repository.owner>
-    </properties>
+    <name>Patra Webjar Application</name>
+    <description>A Webjar containing Patra's static web content. Patra visualizes Dropwizard Metrics
+        in a user friendly way.
+    </description>
+    <url>https://indrabasak.github.io/patra-web/</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 
     <developers>
         <developer>
+            <id>ibasak</id>
             <name>Indra Basak</name>
+            <email>indra.basak1@gmail.com</email>
         </developer>
     </developers>
 
+    <scm>
+        <connection>scm:git:git://github.com/indrabasak/patra-web.git</connection>
+        <developerConnection>scm:git:ssh://github.com:indrabasak/patra-web.git</developerConnection>
+        <url>http://github.com/indrabasak/patra-web/tree/master</url>
+    </scm>
+
     <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>internal.repo</id>
-            <name>GitHub Repository</name>
-            <url>file://${project.build.directory}/mvn-repo</url>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <properties>
+        <patra.version>1.0.0</patra.version>
+        <patra.download.url>https://github.com/indrabasak/patra/archive/v${patra.version}.zip</patra.download.url>
+        <metrics.url>metrics/metrics</metrics.url>
+    </properties>
 
     <build>
         <plugins>
@@ -59,9 +80,10 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://github.com/indrabasak/patra/archive/${patra.version}.zip</url>
+                            <url>${patra.download.url}</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}</outputDirectory>
+                            <skipCache>true</skipCache>
                         </configuration>
                     </execution>
                 </executions>
@@ -87,19 +109,21 @@
                                     </copy>
                                     <echo>Moving 'html' files</echo>
                                     <copy todir="${project.build.directory}/classes/META-INF/resources">
-                                        <fileset dir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
+                                        <fileset
+                                                dir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
                                             <include name="*.html"/>
                                         </fileset>
                                     </copy>
                                     <echo>Deleting old 'html' files</echo>
                                     <delete>
-                                        <fileset dir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
+                                        <fileset
+                                                dir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
                                             <include name="*.html"/>
                                         </fileset>
                                     </delete>
                                     <echo>Renaming 'index.html' to 'patra-ui.html'</echo>
                                     <move file="${project.build.directory}/classes/META-INF/resources/index.html"
-                                            tofile="${project.build.directory}/classes/META-INF/resources/patra-ui.html"/>
+                                          tofile="${project.build.directory}/classes/META-INF/resources/patra-ui.html"/>
                                     <echo>Renaming the 'css' path in 'patra-ui.html'</echo>
                                     <replace token="link href='css/"
                                              value="link href='webjars/patra/css/"
@@ -118,9 +142,20 @@
                                              dir="${project.build.directory}/classes/META-INF/resources">
                                         <include name="patra-ui.html"/>
                                     </replace>
+                                    <echo>Renaming the "images" path in 'patra-ui.html'</echo>
+                                    <replace token="href=&quot;images/"
+                                             value="href=&quot;webjars/patra/images/"
+                                             dir="${project.build.directory}/classes/META-INF/resources">
+                                        <include name="patra-ui.html"/>
+                                    </replace>
+                                    <replace token="src=&quot;images/"
+                                             value="src=&quot;webjars/patra/images/"
+                                             dir="${project.build.directory}/classes/META-INF/resources">
+                                        <include name="patra-ui.html"/>
+                                    </replace>
                                     <echo>Renaming the metrics url</echo>
                                     <replace token="http://localhost:8080/metrics/metrics"
-                                             value="metrics/metrics"
+                                             value="${metrics.url}"
                                              dir="${project.build.directory}/classes/META-INF/resources">
                                         <include name="patra-ui.html"/>
                                     </replace>
@@ -132,44 +167,58 @@
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.1</version>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
                 <configuration>
-                    <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.12</version>
-                <configuration>
-                    <!-- git commit message -->
-                    <message>Maven artifacts for ${project.version}</message>
-                    <!-- disable webpage processing -->
-                    <noJekyll>true</noJekyll>
-                    <!-- matches distribution management repository url above -->
-                    <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
-                    <!-- remote branch name -->
-                    <branch>refs/heads/mvn-repo</branch>
-                    <includes>
-                        <include>**/*</include>
-                    </includes>
-                    <!-- github repo name -->
-                    <repositoryName>${repository.name}</repositoryName>
-                    <!-- github username  -->
-                    <repositoryOwner>${repository.owner}</repositoryOwner>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.2.1</version>
                 <executions>
-                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
                     <execution>
+                        <id>attach-sources</id>
                         <goals>
-                            <goal>site</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
-                        <phase>deploy</phase>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.9.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+<!--            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
         </plugins>
     </build>
 
