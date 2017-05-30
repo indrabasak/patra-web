@@ -12,8 +12,8 @@ Patra visualizes [Dropwizard Metrics](http://metrics.dropwizard.io/) in a user f
 
 # Maven
 
-The current version is `1.0.0`, which is compatible with [Patra 1.0.0](https://indrabasak.github.io/patra/). To use
-the Patra Webjar, add the following dependency to your `pom.xml`.
+The current version is `1.0.0,` which is compatible with [Patra 1.0.0](https://indrabasak.github.io/patra/). To use
+the Patra Webjar, add the following dependency to your `pom.xml.`
 
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ with a Spring application.
 The content of the `patra-web` webjar can be accessed from the following url: `http://<app host>:<app port>/patra-ui.html`
 
 Please note that url for fetching the metric is `http://<app host>:<app port>/metrics/metrics`. If the metrics url is
-different, change it in the `pom.xml` by modifying the _Renaming the metrics url_ step.
+different, change it in the `pom.xml` by modifying the **Renaming the metrics url** step.
 
 # License
 
