@@ -7,7 +7,7 @@ description: A Webjar containing the static content of Patra. Patra visualizes D
 
 author: Indra Basak
 
-#logo: ./src/images/logo-blue_40px.png
+logo: ./src/images/logo-blue_40px.png
 #docs: https://github.com/indrabasak/patra/wiki
 #demo: ./demo/index.html
 blog: https://indrabasak.github.io
