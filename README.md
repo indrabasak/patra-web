@@ -9,6 +9,19 @@ Webjars is a convention for packaging client-side web libraries as JAR dependenc
 
 Patra visualizes [Dropwizard Metrics](http://metrics.dropwizard.io/) in a user friendly way.
 
+# Maven
+
+The current version is `1.0.0`, which is compatible with [Patra 1.0.0](https://indrabasak.github.io/patra/). To use
+the Patra Webjar, add the following dependency to your `pom.xml`.
+
+```xml
+<dependency>
+    <groupId>com.github.indrabasak</groupId>
+    <artifactId>patra-web</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
 # Build
 * Check out the [project](https://github.com/indrabasak/patra-web).
 * Execute the following Maven command from the parent directory:

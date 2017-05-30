@@ -83,7 +83,7 @@
                             <url>${patra.download.url}</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <skipCache>true</skipCache>
+                            <!--<skipCache>true</skipCache>-->
                         </configuration>
                     </execution>
                 </executions>
@@ -205,10 +205,10 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>1.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -218,7 +218,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
