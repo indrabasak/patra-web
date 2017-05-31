@@ -1,4 +1,5 @@
-linguist-language=Java
+pom.xml linguist-language=Java
+
 _layouts/* linguist-documentation
 assets/* linguist-documentation
 images/* linguist-documentation
