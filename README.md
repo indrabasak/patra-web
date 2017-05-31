@@ -1,4 +1,4 @@
-[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Build Status][travis-badge]][travis-badge-url]
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Build Status][travis-badge]][travis-badge-url] [![Maven Central][maven-central-badge]][maven-central-url]
 
 ![](./images/logo-paleblue-candara_357px.png)
 
@@ -50,3 +50,5 @@ The __Patra Web__ code is shared under the terms of [Apache License v2.0](https:
 
 [travis-badge]: https://travis-ci.org/indrabasak/patra-web.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/indrabasak/patra-web
+[maven-central-badge]: https://maven-badges.herokuapp.com/maven-central/com.github.indrabasak/patra-web/badge.svg
+[maven-central-url]: https://maven-badges.herokuapp.com/maven-central/com.github.indrabasak/patra-web/
