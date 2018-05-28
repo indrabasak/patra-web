@@ -21,7 +21,7 @@
 
     <groupId>com.github.indrabasak</groupId>
     <artifactId>patra-web</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 
     <name>Patra Webjar Application</name>
     <description>A Webjar containing Patra's static web content. Patra visualizes Dropwizard Metrics
@@ -62,8 +62,9 @@
     </distributionManagement>
 
     <properties>
-        <patra.version>1.0.0</patra.version>
-        <patra.download.url>https://github.com/indrabasak/patra/archive/v${patra.version}.zip</patra.download.url>
+        <patra.version>1.1.0</patra.version>
+        <!--<patra.download.url>https://github.com/indrabasak/patra/archive/v${patra.version}.zip</patra.download.url>-->
+        <patra.download.url>https://github.com/indrabasak/patra/archive/prj1.1.zip</patra.download.url>
         <metrics.url>metrics/metrics</metrics.url>
     </properties>
 
@@ -83,7 +84,7 @@
                             <url>${patra.download.url}</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <!--<skipCache>true</skipCache>-->
+                            <skipCache>true</skipCache>
                         </configuration>
                     </execution>
                 </executions>
@@ -103,7 +104,10 @@
                                 <sequential>
                                     <echo>Copying Patra files</echo>
                                     <copy todir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
-                                        <fileset dir="${project.build.directory}/patra-${patra.version}/dist">
+<!--                                        <fileset dir="${project.build.directory}/patra-${patra.version}/dist">
+                                            <include name="**"/>
+                                        </fileset>-->
+                                        <fileset dir="${project.build.directory}/patra-prj1.1/dist">
                                             <include name="**"/>
                                         </fileset>
                                     </copy>
@@ -153,12 +157,12 @@
                                              dir="${project.build.directory}/classes/META-INF/resources">
                                         <include name="patra-ui.html"/>
                                     </replace>
-                                    <echo>Renaming the metrics url</echo>
+                                    <!--<echo>Renaming the metrics url</echo>
                                     <replace token="http://localhost:8080/metrics/metrics"
                                              value="${metrics.url}"
                                              dir="${project.build.directory}/classes/META-INF/resources">
                                         <include name="patra-ui.html"/>
-                                    </replace>
+                                    </replace>-->
                                     <echo>Deleting patra folder</echo>
                                     <delete dir="${project.build.directory}/patra-${patra.version}"/>
                                 </sequential>
