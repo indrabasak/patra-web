@@ -21,7 +21,7 @@
 
     <groupId>com.github.indrabasak</groupId>
     <artifactId>patra-web</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 
     <name>Patra Webjar Application</name>
     <description>A Webjar containing Patra's static web content. Patra visualizes Dropwizard Metrics
@@ -62,9 +62,10 @@
     </distributionManagement>
 
     <properties>
-        <patra.version>1.0.0</patra.version>
+        <patra.version>2.0.0</patra.version>
         <patra.download.url>https://github.com/indrabasak/patra/archive/v${patra.version}.zip</patra.download.url>
         <metrics.url>metrics/metrics</metrics.url>
+        <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     </properties>
 
     <build>
@@ -72,7 +73,7 @@
             <plugin>
                 <groupId>com.googlecode.maven-download-plugin</groupId>
                 <artifactId>download-maven-plugin</artifactId>
-                <version>1.3.0</version>
+                <version>1.6.0</version>
                 <executions>
                     <execution>
                         <phase>process-resources</phase>
@@ -83,6 +84,7 @@
                             <url>${patra.download.url}</url>
                             <unpack>true</unpack>
                             <outputDirectory>${project.build.directory}</outputDirectory>
+                            <md5>6c7d96b3d428f9a028afac311c7855a4</md5>
                             <!--<skipCache>true</skipCache>-->
                         </configuration>
                     </execution>
@@ -91,7 +93,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <phase>prepare-package</phase>
@@ -99,7 +101,7 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <sequential>
                                     <echo>Copying Patra files</echo>
                                     <copy todir="${project.build.directory}/classes/META-INF/resources/webjars/patra">
@@ -162,7 +164,7 @@
                                     <echo>Deleting patra folder</echo>
                                     <delete dir="${project.build.directory}/patra-${patra.version}"/>
                                 </sequential>
-                            </tasks>
+                            </target>
                         </configuration>
                     </execution>
                 </executions>
@@ -182,7 +184,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>3.2.1</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -195,7 +197,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
