@@ -12,14 +12,14 @@ Patra visualizes [Dropwizard Metrics](http://metrics.dropwizard.io/) in a user f
 
 # Maven
 
-The current version is `1.0.0,` which is compatible with [Patra 1.0.0](https://indrabasak.github.io/patra/). To use
+The current version is `2.0.0,` which is compatible with [Patra 2.0.0](https://indrabasak.github.io/patra/). To use
 the Patra Webjar, add the following dependency to your `pom.xml.`
 
 ```xml
 <dependency>
     <groupId>com.github.indrabasak</groupId>
     <artifactId>patra-web</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
 </dependency>
 ```
 
